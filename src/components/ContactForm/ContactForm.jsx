@@ -1,9 +1,20 @@
 import { Component } from 'react';
-
-export class App extends Component {
+import { nanoid } from 'nanoid';
+import { Form, Label, Button } from './Contact.styled';
+export class ContactForm extends Component {
   state = {
     name: '',
     number: '',
+  };
+  handleSubmit = event => {
+    event.preventDefault();
+    const newContact = {
+      name: this.state.name,
+      number: this.state.number,
+      id: nanoid(),
+    };
+    this.props.onSubmit(newContact);
+    this.setState({ name: '', number: '' });
   };
   handleChange = event => {
     const { name, value } = event.target;
@@ -11,8 +22,8 @@ export class App extends Component {
   };
   render() {
     return (
-      <form>
-        <label>
+      <Form onSubmit={this.handleSubmit}>
+        <Label>
           name
           <input
             type="text"
@@ -22,8 +33,8 @@ export class App extends Component {
             value={this.state.name}
             onChange={this.handleChange}
           />
-        </label>
-        <label>
+        </Label>
+        <Label>
           number
           <input
             type="text"
@@ -33,9 +44,11 @@ export class App extends Component {
             value={this.state.number}
             onChange={this.handleChange}
           />
-        </label>
-        <button type="submit">add</button>
-      </form>
+        </Label>
+        <Button onSubmit={this.handleSubmit} type="submit">
+          add
+        </Button>
+      </Form>
     );
   }
 }

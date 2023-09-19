@@ -1,24 +1,24 @@
 import styled from 'styled-components';
-export const Form = styled.form`
+export const List = styled.ul`
+  list-style: none;
+  width: 400px;
   display: flex;
   flex-direction: column;
-  row-gap: 30px;
-  width: 300px;
-  margin-left: auto;
-  margin-right: auto;
+  align-items: center;
 `;
-export const Label = styled.label`
+
+export const Item = styled.li`
   display: flex;
+  align-items: center;
+  width: 100%;
   justify-content: space-between;
 `;
+
 export const Button = styled.button`
-  width: 150px;
-  background-color: green;
   border: none;
+  background-color: tomato;
   border-radius: 5px;
+  padding: 8px 16px;
   color: white;
-  padding: 15px 30px;
-  margin-left: auto;
-  margin-right: auto;
   cursor: pointer;
 `;
